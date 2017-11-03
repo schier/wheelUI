@@ -102,6 +102,17 @@
         </div>
       </div>
     </div>
+    <div class="wh-cell-group">
+      <div class="wh-cells">
+        <div class="wh-cell">
+          <div class="wh-cell-hd">手机号</div>
+          <div class="wh-cell-bd">
+            <input type="tel" name="telphone">
+          </div>
+          <div class="wh-cell-ft"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
