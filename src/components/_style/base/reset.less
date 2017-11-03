@@ -1,0 +1,36 @@
+@import "../themes/default/index";
+*,
+*:before,
+*:after {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: @font-size-l;
+  font-family: @font-family;
+  line-height: @line-height-paragraph;
+  background-color: @body-color-background;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*[contenteditable] {
+  -webkit-user-select: auto !important;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
