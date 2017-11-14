@@ -1,4 +1,4 @@
-@import "../../../_style/themes/default/index.less";
+@import "../../../_style/fn";
 
 @prefix-cls: ~"@{prefix}-badge";
 
@@ -8,42 +8,44 @@
   line-height: 1;
   vertical-align: middle;
 
-  &-count {
+  &-count, &-dot {
     position: absolute;
     z-index: 10;
-    transform: translateX(50%);
+    box-shadow: 0 0 0 1px #fff;
+    background: @brand-error;
+  }
+  &-count {
     top: -10px; right: 0;
     // height: 20px;
     min-width: 10px;
     line-height: 1.5;
-    padding: 0 @h-spacing-m;
-    background: @brand-error;
-    border: 1px solid transparent;
     border-radius: 10px;
+    padding: 0 @h-spacing-m;
+    border: 1px solid transparent;
     color: #fff;
     text-align: center;
     font-size: @font-size-m;
     white-space: nowrap;
+    transform: translateX(50%);
     transform-origin: -10% center;
-    box-shadow: 0 0 0 1px #fff;
-
-    &-alone {
-      top: auto;
-      display: block;
-      position: relative;
-      transform: translateX(0);
-    }
   }
   &-dot {
-    position: absolute;
-    z-index: 10;
     top: -4px; right: -8px;
     height: 8px;
     width: 8px;
+    border-radius: 100%;
     transform: translateX(-50%);
     transform-origin: 0 center;
-    border-radius: 100%;
-    background: @brand-error;
-    box-shadow: 0 0 0 1px #fff;
+  }
+  &-alone {
+    top: auto;
+    display: block;
+    position: relative;
+  }
+  &-count&-alone {
+    transform: translateX(0);
+  }
+  &-dot&-alone {
+    transform: translateX(-100%);
   }
 }

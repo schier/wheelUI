@@ -30,14 +30,20 @@
         return `${prefixCls}`
       },
       dotClasses () {
-        return `${prefixCls}-dot`
+        return [
+          `${prefixCls}-dot`,
+          {
+            [`${this.className}`]: !!this.className,
+            [`${prefixCls}-alone`]: this.alone
+          }
+        ]
       },
       countClasses () {
         return [
           `${prefixCls}-count`,
           {
             [`${this.className}`]: !!this.className,
-            [`${prefixCls}-count-alone`]: this.alone
+            [`${prefixCls}-alone`]: this.alone
           }
         ]
       },

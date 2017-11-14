@@ -12,6 +12,7 @@
             <div class="list">
               <router-link to="/demo/badge">badge徽章</router-link>
               <router-link to="/demo/icon">icon图标</router-link>
+              <router-link to="/demo/avatar">avatar头像</router-link>
             </div>
           </li>
           <li class="cell">
@@ -59,23 +60,23 @@
     </div>
     <div class="wh-tabbar">
       <div class="wh-tabbar-item cur">
-        <badge><icon type="ios-home" :size="iconSize" /></badge>
+        <icon type="ios-home" :size="iconSize" />
         <p>首页</p>
       </div>
       <div class="wh-tabbar-item">
-        <badge><icon type="ios-alarm-outline" :size="iconSize" /></badge>
+        <icon type="ios-alarm-outline" :size="iconSize" />
         <p>闹钟</p>
       </div>
       <div class="wh-tabbar-item">
-        <badge  dot><icon type="ios-world-outline" :size="iconSize" /></Icon></badge>
+        <icon type="ios-world-outline" :size="iconSize" /></Icon>
         <p>世界</p>
       </div>
       <div class="wh-tabbar-item">
-        <badge><icon type="ios-color-filter-outline" :size="iconSize" /></badge>
+        <icon type="ios-color-filter-outline" :size="iconSize" />
         <p>损色</p>
       </div>
       <div class="wh-tabbar-item">
-        <badge><icon type="ios-person-outline" :size="iconSize" /></badge>
+        <badge count="9"><icon type="ios-person-outline" :size="iconSize" /></badge>
         <p>我的</p>
       </div>
     </div>
@@ -133,9 +134,13 @@ export default {
     bottom: 0;
     width: 100%;
     height: 44px;
+    padding-top: 6px;
     display: flex;
     align-items: center;
-    background-color: #f5f5f5;
+    background-color: #fff;
+    &:before {
+      .setTopLine();
+    }
     &-item {
       flex: 1;
       text-align: center;
