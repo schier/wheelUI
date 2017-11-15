@@ -29,8 +29,7 @@
 </template>
 
 <script>
-import Icon from '../../icon'
-import Avatar from '../'
+import { Icon, Avatar } from '@/components'
 export default {
   data () {
     return {}

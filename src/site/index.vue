@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style lang="less">
-  @import "../components/_style/index";
+  @import "../components/_style/fn";
   ul { list-style: none; }
   .page {
     padding: 30px 30px 44px;

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Icon from '../'
+import { Icon } from '@/components'
 export default {
   data () {
     return {

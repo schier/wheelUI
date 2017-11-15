@@ -10,3 +10,6 @@ export default {
 }
 </script>
 
+<style lang="less">
+  @import "./components/_style/index";
+</style>

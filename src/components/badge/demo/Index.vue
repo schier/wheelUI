@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import Badge from '../'
+  import { Badge } from '@/components'
   export default {
     data () {
       return {
