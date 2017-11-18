@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="wh-cell-group">
+    <!-- <div class="wh-cell-group">
       <div class="wh-cells">
         <div class="wh-cell wh-cell-access">
           <div class="wh-cell-hd" style="font-size:0;"><avatar shape="circle" size="l" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style="margin-right:15px;background-color:#87d068"></avatar></div>
@@ -51,7 +51,6 @@
         <div class="wh-cell wh-cell-access">
           <div class="wh-cell-hd">
             <div style="height:20px;width:20px;padding: 2px;border-radius:3px;background:#00a854;margin-right:15px;text-align:center">
-              
             </div>
           </div>
           <div class="wh-cell-bd">
@@ -120,31 +119,37 @@
           <div class="wh-cell-ft"></div>
         </div>
       </div>
-    </div>
-    <cell-group title="cell标题" tips="底部提示文字">
-      <cell isLink >
-        <cell-hd></cell-hd>
-        <cell-bd></cell-bd>
-        <cell-ft></cell-ft>
+    </div> -->
+    <cell-group title="通知" tips="无论iPhone是否锁定，都会显示通知预览">
+      <cell isLink>
+        <div slot="hd" style="font-size:0"><avatar icon="ios-home" size="m" style="background-color:#f40;margin-right:15px;"></avatar></div>
+        <div slot="bd">
+          <p>游戏</p>
+        </div>
+        <div slot="ft" style="font-size: 0;">
+          <badge dot><a href="#" style="font-size:14px;">可以是一个链接</a></badge>
+        </div>
       </cell>
-    </cell-group>
-    <cell-group title="cell标题" tips="底部提示文字">
-      <cell isLink icon="ios-home" value="主体文字" desc="说明文字"></cell>
+      <cell isLink>
+        <div slot="hd" style="font-size:0"><avatar icon="ios-home" size="m" style="background-color:#f40;margin-right:15px;"></avatar></div>
+        <div slot="bd">
+          <p>购物</p>
+        </div>
+        <div slot="ft" style="font-size: 0;">
+          <p style="font-size: 14px;margin-right:10px;">微信的badge是这样的<badge dot></badge></p>
+        </div>
+      </cell>
     </cell-group>
   </div>
 </template>
 
 <script>
-import Badge from '../../badge/src/badge'
-import Icon from '../../icon/src/icon'
-import Avatar from '../../avatar/src/avatar'
-// const prefixCls = 'wh-cell'
+import { Badge, Icon, Avatar, Cell, CellGroup } from '@/components'
 export default {
-  components: { Badge, Icon, Avatar }
+  components: { Badge, Icon, Avatar, Cell, CellGroup }
 }
 </script>
 
 <style lang="less">
-@import "../../_style/index";
-@import "../src/style/cell";
+
 </style>

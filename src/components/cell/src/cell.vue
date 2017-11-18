@@ -1,21 +1,38 @@
 <template>
-  <div class="wh-cell-group">
-    <div class="wh-cell-title">cell标题</div>
-    <div class="wh-cells">
-      <div class="wh-cell">
-        <div class="wh-cell-hd">icon</div>
-        <div class="wh-cell-bd">随意点放什么</div>
-        <div class="wh-cell-ft">带箭头吗</div>
-      </div>
+  <div class="wh-cell" :class="access">
+    <div class="wh-cell-hd">
+      <slot name='hd'></slot>
+    </div>
+    <div class="wh-cell-bd">
+      <slot name='bd'></slot>
+    </div>
+    <div class="wh-cell-ft">
+      <slot name='ft'></slot>
     </div>
   </div>
 </template>
 
 <script>
-  const prefixCls = 'wh-cell'
-  export default {}
+  // const prefixCls = 'wh-cell'
+  export default {
+    name: 'Cell',
+    props: {
+      isLink: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data () {
+      return {}
+    },
+    computed: {
+      access () {
+        if (this.isLink) return 'wh-cell-access'
+      }
+    }
+  }
 </script>
 
 <style lang="less">
-
+@import "./style/cell";
 </style>

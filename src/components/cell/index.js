@@ -1,2 +1,5 @@
-import Badge from './src/badge.vue'
-export default Badge
+import CellGroup from './src/CellGroup'
+import Cell from './src/Cell'
+
+Cell.Group = CellGroup
+export default Cell
