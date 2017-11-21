@@ -1,5 +1,5 @@
 <template>
-  <div class="wh-cell" :class="access">
+  <div class="wh-cell" :class="access" @click="handleClick">
     <div class="wh-cell-hd">
       <slot name='hd'></slot>
     </div>
@@ -28,6 +28,11 @@
     computed: {
       access () {
         if (this.isLink) return 'wh-cell-access'
+      }
+    },
+    methods: {
+      handleClick (event) {
+        this.$emit('click', event)
       }
     }
   }

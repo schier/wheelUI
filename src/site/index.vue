@@ -28,7 +28,7 @@
           <li class="cell">
             <h3 class="title">表单类</h3>
             <div class="list">
-              <a href="javascript:">button按钮</a>
+              <router-link to="/demo/button">button按钮</router-link>
               <a href="javascript:">input输入框</a>
               <a href="javascript:">radio单选框</a>
               <a href="javascript:">checkbo多选框</a>
