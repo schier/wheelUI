@@ -14,8 +14,23 @@
 @brand-highlight          : @red-6;
 @brand-warning            : @yellow-6;
 @brand-normal             : #d9d9d9;
+
+// Color used by default to control hover and active backgrounds and for
+// alert info backgrounds.
+@primary-1                : color(~`colorPalette("@{brand-primary}", 1)`);  // replace tint(@brand-primary, 90%)
+@primary-2                : color(~`colorPalette("@{brand-primary}", 2)`);  // replace tint(@brand-primary, 80%)
+@primary-3                : color(~`colorPalette("@{brand-primary}", 3)`);  // unused
+@primary-4                : color(~`colorPalette("@{brand-primary}", 4)`);  // unused
+@primary-5                : color(~`colorPalette("@{brand-primary}", 5)`);  // color used to control the text color in many active and hover states, replace tint(@brand-primary, 20%)
+@primary-6                : @brand-primary;                                 // color used to control the text color of active buttons, don't use, use @brand-primary
+@primary-7                : color(~`colorPalette("@{brand-primary}", 7)`);  // replace shade(@brand-primary, 5%)
+@primary-8                : color(~`colorPalette("@{brand-primary}", 8)`);  // unused
+@primary-9                : color(~`colorPalette("@{brand-primary}", 9)`);  // unused
+@primary-10               : color(~`colorPalette("@{brand-primary}", 10)`); // unused
+
 // Background color for `<body>`
 @body-color-background    : #efeff4;
+
 //  Text color
 @text-color-base          : #000;           // 基本
 @text-color-base-inverse  : #fff;           // 基本 - 反色
@@ -25,6 +40,7 @@
 @text-color-caption       : #888;           // 辅助描述
 @text-color-paragraph     : #333;           // 段落
 @text-color-link          : @brand-primary; // 链接
+@text-color-primary       : #fff;           // primary
 
 // -------- Font -----------
 @font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
@@ -62,8 +78,15 @@
 @v-spacing-xxl            : 21 * @hd;
 
 // border-radius
-@border-radius-m          : 2px;
-@border-radius-s          : 4px;
+@border-radius-m          : 2 * @hd;
+@border-radius-s          : 4 * @hd;
+@border-radius-l          : 6 * @hd;
+
+// Border color
+@border-color-base        : #d9d9d9;        // base border outline a component
+@border-color-split       : #e9e9e9;        // split border inside a component
+@border-width-base        : 1px;            // width of the border for a component
+@border-style-base        : solid;          // style of a components border
 
 // line-height
 @line-height-base         : 1;      // 单行行高
@@ -71,29 +94,78 @@
 
 
 // -------- z-index -----------
-@z-index-1                : 1;
+@z-index-base             : 1000;
+@z-index-1                : 1 * @z-index-base;
+@z-index-2                : 2 * @z-index-base;
+@z-index-3                : 3 * @z-index-base;
+@z-index-4                : 4 * @z-index-base;
 
+// Default background color for disabled states, Collapse wrappers,
+// and several active and hover states.
+@background-color-base    : #f7f7f7;
+@background-color-active  : #eee;
+
+// Disabled states
+@disabled-color           : fade(#000, 25%);
+@disabled-bg              : @background-color-base;
+@disabled-color-dark      : fade(#fff, 35%);
 
 // -------- components -----------
 // cell
 
 
 // Avatar
-@avatar-size-m            : 24px;
-@avatar-size-s            : 32px;
-@avatar-size-l            : 40px;
-@avatar-font-size-m       : 14px;
-@avatar-font-size-s       : 18px;
-@avatar-font-size-l       : 24px;
+@avatar-size-m            : 24 * @hd;
+@avatar-size-s            : 32 * @hd;
+@avatar-size-l            : 40 * @hd;
+@avatar-font-size-m       : 14 * @hd;
+@avatar-font-size-s       : 18 * @hd;
+@avatar-font-size-l       : 24 * @hd;
 @avatar-bg                : #ccc;
 @avatar-color             : #fff;
 @avatar-border-radius     : @border-radius-s;
 
 // Button
-@button-gap               : 15px;
-@button-height            : 44px;
+@btn-gap                  : 15 * @hd;
+@btn-height               : 44 * @hd;
+@btn-font-weight          : 500;
 
+@btn-padding-base         : 0 15 * @hd;
+@btn-height-base          : 44 * @hd;
+@btn-font-size-base       : @font-size-xl; // 16
+@btn-border-radius-base   : @border-radius-l; // 6
 
+@btn-size-m-height        : 28 * @hd;
+@btn-size-m-padding       : 0 10 * @hd;
+@btn-size-m-font-size     : @font-size-s; // 14
+@btn-size-m-border-radius : @border-radius-s;  // 4
+
+@btn-default-color        : @text-color-base;
+@btn-default-bg           : #fff;
+@btn-default-border       : @border-color-base;
+
+@btn-primary-color        : #fff;
+@btn-primary-bg           : @brand-primary;
+@btn-primary-border       : color(~`colorPalette("@{brand-primary}", 7)`);
+
+@btn-info-color           : #fff;
+@btn-info-bg              : @brand-info;
+@btn-info-border          : color(~`colorPalette("@{brand-info}", 7)`);
+
+@btn-success-color        : #fff;
+@btn-success-bg           : @brand-success;
+@btn-success-border       : color(~`colorPalette("@{brand-success}", 7)`);
+
+@btn-warning-color        : #fff;
+@btn-warning-bg           : @brand-warning;
+@btn-warning-border       : color(~`colorPalette("@{brand-warning}", 7)`);
+
+@btn-error-color          : #fff;
+@btn-error-bg             : @brand-error;
+@btn-error-border         : color(~`colorPalette("@{brand-error}", 7)`);
+
+// Navbar
+@navbar-height            : 44px;
 
 
 

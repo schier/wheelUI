@@ -40,9 +40,17 @@
             <h3 class="title">导航类</h3>
             <div class="list">
               <a href="javascript:">tabbar底部导航</a>
-              <a href="javascript:">navbar顶部导航</a>
+              <router-link to="/demo/navbar">navbar顶部导航</router-link>
               <a href="javascript:">menu菜单</a>
               <a href="javascript:">drawer抽屉导航</a>
+            </div>
+          </li>
+          <li class="cell">
+            <h3 class="title">操作反馈</h3>
+            <div class="list">
+              <router-link to="/demo/actionsheet">actionsheet动作面板</router-link>
+              <router-link to="/demo/modal">modal对话框</router-link>
+              <a href="javascript:">toast轻提示</a>
             </div>
           </li>
           <li class="cell">

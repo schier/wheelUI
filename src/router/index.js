@@ -7,6 +7,8 @@ import IconDeom from '@/components/icon/demo/Index'
 import CellDemo from '@/components/cell/demo/Index'
 import AvatarDemo from '@/components/avatar/demo/Index'
 import ButtonDemo from '@/components/button/demo/Index'
+import NavbarDemo from '@/components/navbar/demo/Index'
+import ModalDemo from '@/components/modal/demo/Index'
 
 Vue.use(Router)
 
@@ -41,6 +43,16 @@ export default new Router({
       path: '/demo/button',
       name: 'ButtonDemo',
       component: ButtonDemo
+    },
+    {
+      path: '/demo/navbar',
+      name: 'NavbarDemo',
+      component: NavbarDemo
+    },
+    {
+      path: '/demo/modal',
+      name: 'ModalDemo',
+      component: ModalDemo
     }
   ]
 })

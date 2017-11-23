@@ -1,9 +1,8 @@
 <template>
   <button :type="htmlType" :class="classes" :disabled="disabled" @click="handleClick">
-    <!-- <Icon class="ivu-load-loop" type="load-c" v-if="loading"></Icon> -->
+    <Icon type="load-c" v-if="loading"></Icon>
     <Icon :type="icon" v-if="icon && !loading"></Icon>
-    <!-- <span v-if="showSlot" ref="slot"><slot></slot></span> -->
-    <span ref="slot"><slot></slot></span>
+    <span><slot></slot></span>
   </button>
 </template>
 
@@ -17,8 +16,8 @@
     components: { Icon },
     props: {
       size: {
-        type: [Number, String],
-        default: 24
+        type: String,
+        default: null
       },
       type: {
         type: String,
@@ -36,6 +35,10 @@
         type: Boolean,
         default: false
       },
+      inline: {
+        type: Boolean,
+        default: false
+      },
       icon: String
     },
     computed: {
@@ -43,7 +46,10 @@
         return [
           `${prefixCls}`,
           {
-            [`${prefixCls}-${this.type}`]: !!this.type
+            [`${prefixCls}-${this.type}`]: !!this.type,
+            [`${prefixCls}-loading`]: this.loading != null && this.loading,
+            [`${prefixCls}-inline`]: this.inline != null && this.inline,
+            [`${prefixCls}-${this.size}`]: !!this.size
           }
         ]
       }

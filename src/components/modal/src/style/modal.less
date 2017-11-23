@@ -1,0 +1,54 @@
+@import "../../../_style/fn";
+
+@prefix-cls: ~"@{prefix}-modal";
+
+.@{prefix-cls} {
+  position: relative;
+
+  &-mask {
+    .mask;
+  }
+
+  &-wrap {
+    position: fixed;
+    overflow: auto;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: @z-index-4;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &&-transparent {
+    width: 270 * @hd;
+    .@{prefix-cls}-content {
+      border-radius: @radius-xl;
+      height: auto;
+      padding-top: @v-spacing-xl;
+
+      .@{prefix-cls}-hd {
+        padding: 0 @h-spacing-l @v-spacing-l;
+      }
+    }
+  }
+
+  &-content {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+    background-clip: padding-box;
+  }
+
+  &-bd {
+    height: 100%;
+    line-height: @line-height-paragraph;
+    overflow: auto;
+  }
+  
+
+
+}

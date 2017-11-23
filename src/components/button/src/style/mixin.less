@@ -1,0 +1,134 @@
+// mixins for button
+// ------------------------
+.button-size(@height; @padding; @font-size; @border-radius) {
+  box-sizing: border-box;
+  padding: @padding;
+  font-size: @font-size;
+  border-radius: @border-radius;
+  height: @height;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 0; left: 0;
+    border-radius: @border-radius*2;
+    box-sizing: border-box;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
+.button-color(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  &:after {
+    border: 1px solid @border;
+  }
+}
+.button-disabled(@color; @background; @border) {
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      .button-color(fade(@color, 50%); fade(@background, 50%); fade(@border, 50%));
+    }
+  }
+}
+.button-variant(@color; @background; @border) {
+  .button-color(@color; @background; @border);
+  &:active,
+  &.active {
+    .button-color(color(~`colorPalette("@{color}", 7)`); color(~`colorPalette("@{background}", 7)`); color(~`colorPalette("@{border}", 7)`));
+  }
+  .button-disabled(@color; @background; @border);
+}
+
+// Base styles of buttons
+// --------------------------------------------------
+.btn() {
+  position: relative;
+  display: block;
+  width: 100%;
+  line-height: 1;
+  .button-size(@btn-height-base; @btn-padding-base; @btn-font-size-base; @btn-border-radius-base);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  white-space: nowrap;
+  
+  font-weight: @btn-font-weight;
+  text-align: center;
+
+  touch-action: manipulation;
+  cursor: pointer;
+
+  background-image: none;
+  background-color: transparent;
+  outline: 0;
+  border-width: 0;
+  -webkit-appearance: none;
+  user-select: none;
+
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+  &:not([disabled]):hover {
+    text-decoration: none;
+  }
+
+  &:not([disabled]):active {
+    outline: 0;
+    transition: none;
+  }
+
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    > * {
+      pointer-events: none;
+    }
+  }
+
+  & + & {
+    margin-top: @btn-gap;
+  }
+  &-inline + &-inline {
+    margin-top: auto;
+    margin-left: @btn-gap;
+  }
+
+  // size
+  &-m {
+    .button-size(@btn-size-m-height; @btn-size-m-padding; @btn-size-m-font-size; @btn-size-m-border-radius);
+  }
+}
+.btn-inline() {
+  display: inline-block;
+  width: auto;
+}
+.btn-default() {
+  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+}
+.btn-primary() {
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+}
+.btn-info() {
+  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+}
+.btn-success() {
+  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+}
+.btn-warning() {
+  .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+}
+.btn-error() {
+  .button-variant(@btn-error-color; @btn-error-bg; @btn-error-border);
+}
+
