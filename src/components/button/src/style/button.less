@@ -1,53 +1,41 @@
 @import "../../../_style/fn";
+@import "../../../_style/animation/rotate";
+@import "./mixin";
 
 @prefix-cls: ~"@{prefix}-btn";
 
 .@{prefix-cls} {
-  position: relative;
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 14px;
-  padding-right: 14px;
+  .btn;
+  .btn-default;
 
-  border-width: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  background-color: transparent;
-
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-
-  font-size: @font-size-xl;
-  line-height: unit(@button-height/@font-size-xl);
-  border-radius: @border-radius-s;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
-  white-space: nowrap;
-
-  &:after {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: 0; left: 0;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    transform: scale(0.5);
-    transform-origin: 0 0;
-    box-sizing: border-box;
-    border-radius: @border-radius-s*2;
-  }
-  &:focus {
-    outline: 0;
+  & > .@{prefix}-icon + span, & > span + .@{prefix}-icon{
+    margin-left: @h-spacing-m;
   }
 
-  & + & {
-    margin-top: @button-gap;
+  &-primary {
+    .btn-primary;
+  }
+  &-info {
+    .btn-info;
+  }
+  &-success {
+    .btn-success;
+  }
+  &-warning {
+    .btn-warning;
+  }
+  &-error {
+    .btn-error;
+  }
+
+  &-inline {
+    .btn-inline;
+  }
+
+  &-loading {
+    .@{prefix}-icon-load-c {
+      animation: load-loop 1s linear infinite;
+    }
   }
 }
 

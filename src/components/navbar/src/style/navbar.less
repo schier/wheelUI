@@ -1,0 +1,44 @@
+@import "../../../_style/fn";
+
+@prefix-cls: ~"@{prefix}-navbar";
+
+.@{prefix-cls} {
+  display: flex;
+  align-items: center;
+  height: @navbar-height;
+  background-color: @brand-primary;
+  color: @text-color-primary;
+  overflow: hidden;
+
+  &-hd,
+  &-bd,
+  &-ft {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &-hd {
+    padding-left: @h-spacing-xl;
+  }
+  &-bd {
+    justify-content: center;
+    font-size: 18 * @hd;
+    white-space: nowrap;
+    text-align: center;
+  }
+  &-ft {
+    justify-content: flex-end;
+    margin-right: @h-spacing-xl;
+    text-align: right;
+  }
+
+  &-light {
+    background-color: #fff;
+    color: @brand-primary;
+    & > .@{prefix-cls}-bd {
+      color: @text-color-base;
+    }
+  }
+}
