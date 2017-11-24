@@ -71,15 +71,20 @@
     text-align: center;
     text-decoration: none;
     outline: none;
+    user-select: none;
     color: @text-color-link;
     font-size: @modal-btn-font-size;
     height: @modal-btn-height;
     line-height: @modal-btn-height;
     display: block;
     .ellipsis();
+    &:active {
+      background-color: @fill-tap;
+    }
   }
   &-button-group-h {
     position: relative;
+    .hairline('top');
     display: flex;
 
     .@{prefix-cls}-button {
@@ -91,10 +96,37 @@
       }
       &:last-child {
         position: relative;
-        // .hairline('left');
+        .hairline('left');
       }
     }
-  }  
+  }
+  &-button-group-v {
+    .@{prefix-cls}-button {
+      -webkit-touch-callout: none;
+      display: block;
+      position: relative;
+      .hairline('top');
+      .button-common();
+    }
+  }
+
+  &&-operation {
+    .@{prefix-cls}-content {
+      border-radius: @radius-xl;
+      height: auto;
+      padding-top: 0;
+
+      .@{prefix-cls}-bd {
+        padding: 0!important;
+      }
+
+      .@{prefix-cls}-button {
+        color: @text-color-base;
+        text-align: left;
+        padding-left: @h-spacing-xl;
+      }
+    }
+  }
 
 
 }

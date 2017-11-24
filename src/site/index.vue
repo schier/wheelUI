@@ -146,9 +146,7 @@ export default {
     display: flex;
     align-items: center;
     background-color: #fff;
-    &:before {
-      .setTopLine();
-    }
+    .hairline('top');
     &-item {
       flex: 1;
       text-align: center;
