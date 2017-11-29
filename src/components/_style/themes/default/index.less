@@ -90,11 +90,26 @@
 
 
 // -------- z-index -----------
-@z-index-base             : 1000;
+// 基础
+@z-index-base             : 100;
 @z-index-1                : 1 * @z-index-base;
 @z-index-2                : 2 * @z-index-base;
 @z-index-3                : 3 * @z-index-base;
 @z-index-4                : 4 * @z-index-base;
+// 组件z-index管理
+@z-index-modadl           : @z-index-1; // modal.alert 应该最大，其他应该较小
+@z-index-actionsheet      : @z-index-2; // actonsheet 会放到 popup / modal 中
+@z-index-popover          : @z-index-4;
+@z-index-popup            : @z-index-1;
+
+
+// @progress-zindex: 2000;
+// @popover-zindex: 1999;
+// @toast-zindex: 1999;
+// @action-sheet-zindex: 1000; // actonsheet 会放到 popup / modal 中
+// @picker-zindex: 1000;
+// @popup-zindex: 999;
+// @tabs-pagination-zindex: 999;
 
 // Default background color for disabled states, Collapse wrappers,
 // and several active and hover states.

@@ -5,6 +5,12 @@
 .@{prefix-cls} {
   display: inline-block;
 
+  position: absolute;
+  z-index: @z-index-popover;
+
+  &-mask {
+    .mask;
+  }
   &-rel {
     position: relative;
     display: inline-block;
@@ -13,6 +19,7 @@
     width: 100%;
     background-color: #fff;
     background-clip: padding-box;
+    border-radius: @radius-l;
   }
   &-arrow {
 
