@@ -51,6 +51,7 @@
               <router-link to="/demo/actionsheet">actionsheet动作面板</router-link>
               <router-link to="/demo/modal">modal对话框</router-link>
               <a href="javascript:">toast轻提示</a>
+              <router-link to="/demo/pullload">pulload拉动加载/刷新</router-link>
             </div>
           </li>
           <li class="cell">

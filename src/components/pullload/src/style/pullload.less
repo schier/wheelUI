@@ -1,0 +1,26 @@
+@import "../../../_style/fn";
+
+@prefix-cls: ~"@{prefix}-pullload";
+
+.@{prefix-cls} {
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  &-bd {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  &-hd,
+  &-ft {
+    position: relative;
+    width: 100%;
+    & > .text {
+      height: 100%;
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+}

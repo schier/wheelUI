@@ -1,2 +1,2 @@
-import Modal from './src/modal.vue'
+import Modal from './src/Modal.vue'
 export default Modal

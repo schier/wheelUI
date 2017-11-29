@@ -1,19 +1,19 @@
 <template>
-  <div class="wh-cell" :class="access" @click="handleClick">
-    <div class="wh-cell-hd">
+  <div :class="classes" @click="handleClick">
+    <div :class="[prefixCls + '-hd']">
       <slot name='hd'></slot>
     </div>
-    <div class="wh-cell-bd">
+    <div :class="[prefixCls + '-bd']">
       <slot name='bd'></slot>
     </div>
-    <div class="wh-cell-ft">
+    <div :class="[prefixCls + '-ft']">
       <slot name='ft'></slot>
     </div>
   </div>
 </template>
 
 <script>
-  // const prefixCls = 'wh-cell'
+  const prefixCls = 'wh-cell'
   export default {
     name: 'Cell',
     props: {
@@ -23,11 +23,18 @@
       }
     },
     data () {
-      return {}
+      return {
+        prefixCls: prefixCls
+      }
     },
     computed: {
-      access () {
-        if (this.isLink) return 'wh-cell-access'
+      classes () {
+        return [
+          `${prefixCls}`,
+          {
+            [`${prefixCls}-access`]: !!this.isLink
+          }
+        ]
       }
     },
     methods: {

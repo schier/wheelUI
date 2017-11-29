@@ -9,6 +9,8 @@ import AvatarDemo from '@/components/avatar/demo/Index'
 import ButtonDemo from '@/components/button/demo/Index'
 import NavbarDemo from '@/components/navbar/demo/Index'
 import ModalDemo from '@/components/modal/demo/Index'
+import PullLoadDemo from '@/components/pullload/demo/Index'
+import PopoverDemo from '@/components/popover/demo/Index'
 
 Vue.use(Router)
 
@@ -53,6 +55,16 @@ export default new Router({
       path: '/demo/modal',
       name: 'ModalDemo',
       component: ModalDemo
+    },
+    {
+      path: '/demo/pullload',
+      name: 'PullLoadDemo',
+      component: PullLoadDemo
+    },
+    {
+      path: '/demo/popover',
+      name: 'PopoverDemo',
+      component: PopoverDemo
     }
   ]
 })

@@ -5,6 +5,8 @@ import Icon from './icon'
 import iButton from './button'
 import Navbar from './Navbar'
 import Modal from './Modal'
+import PullLoad from './PullLoad'
+import Popover from './Popover'
 
 const CellGroup = Cell.Group
 const ButtonGroup = iButton.Group
@@ -18,5 +20,7 @@ export {
   iButton,
   ButtonGroup,
   Navbar,
-  Modal
+  Modal,
+  PullLoad,
+  Popover
 }
