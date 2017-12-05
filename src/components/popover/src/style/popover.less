@@ -3,11 +3,12 @@
 @prefix-cls: ~"@{prefix}-popover";
 
 .@{prefix-cls} {
-  display: inline-block;
-
   position: absolute;
   z-index: @z-index-popover;
 
+  &-wrap {
+    display: inline-block;
+  }
   &-mask {
     .mask;
   }

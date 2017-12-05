@@ -1,0 +1,88 @@
+@import "../../../_style/fn";
+
+@prefix-cls: ~"@{prefix}-switch";
+
+.@{prefix-cls} {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  align-self: center;
+  
+  &-checkbox {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid @switch-bg;
+    background-color: @switch-bg;
+    transition: background-color .1s, border .1s;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: @switch-bg-off;
+      transition:transform .35s cubic-bezier(0.45, 1, 0.4, 1);
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      transition:transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    }
+  }
+  &-input {
+    position: absolute;
+    left: -9999px;
+  }
+  &-input:checked ~ &-checkbox {
+    border-color: @switch-bg-on;
+    background-color: @switch-bg-on;
+    &:before {
+      transform: scale(0);
+    }
+    // &:after {
+    //   transform: translateX((@switch-size-s-width - @switch-size-s-height));
+    // }
+  }
+  &&-disabled {
+    opacity: @opacity-disabled;
+  }
+  
+  &,
+  &&-s {
+    .switch-size(@switch-size-s-width, @switch-size-s-height);
+  }
+  &&-m {
+    .switch-size(@switch-size-m-width, @switch-size-m-height);
+  }
+}
+
+.switch-size(@width, @height) {
+  .@{prefix-cls}-checkbox {
+    width: @width;
+    height: @height;
+    border-radius: @height/2;
+    &:before {
+      width: @width - 2;
+      height: @height - 2;
+      border-radius: (@height - 2)/2;
+    }
+    &:after {
+      width: @height - 2;
+      height: @height - 2;
+      border-radius: (@height - 2)/2;
+    }
+  }
+  
+  .@{prefix-cls}-input:checked ~ .@{prefix-cls}-checkbox {
+    &:after {
+      transform: translateX((@width - @height));
+    }
+  }
+}

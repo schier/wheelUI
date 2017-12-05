@@ -1,10 +1,26 @@
 <template>
   <div class="demo">
-    <i-button @click="testModal">testModal</i-button>
+    <i-button type="primary" @click="testModal3">alert</i-button>
+    <i-button type="primary" @click="testModal">confirm</i-button>
+    <i-button type="primary" @click="testModal2">operation</i-button>
+    <i-button type="primary" @click="testModal">input</i-button>
     <modal
       v-model="modal"
-      title="Apple ID密码"
-      :buttons="buttons1"><p>输入xxxx的密Apple ID密码来关闭查找我的iPhone<input type="number" name="number"></p></modal>
+      :mask-closable="false"
+      :buttons="buttons1" @button-click="clickTest">
+      <p>输入xxxx的密Apple ID密码来关闭查找我的iPhone<input type="number" name="number"></p>
+    </modal>
+    <modal
+      v-model="modal2"
+      operation
+      :buttons="buttons2">
+    </modal>
+    <modal
+      v-model="modal3"
+      title="标题"
+      :buttons="buttons3">
+      <p>输入xxxx的密Apple ID密码来关闭查找我的iPhone<input type="number" name="number"></p>
+    </modal>
   </div>
 </template>
 
@@ -15,27 +31,48 @@
     data () {
       return {
         modal: false,
+        modal2: false,
+        modal3: false,
         buttons1: [{
-          label: '取消',
-          onClick: function () {
-            console.log('cancle!')
-          }
+          label: '取消'
         }, {
-          label: '确认',
-          onClick: function () {
-            console.log('ok!')
-          }
+          label: '确认'
+        }],
+        buttons2: [{
+          label: '标为未读'
+        }, {
+          label: '置顶消息'
+        }, {
+          label: '分享给朋友'
+        }],
+        buttons3: [{
+          label: '1'
         }]
       }
     },
     methods: {
       testModal () {
         this.modal = true
-        console.log(typeof this.buttons1[0].onClick === 'function')
-        // this.$Modal.confirm({
-        //   title: '标题栏',
-        //   content: '<p>自定义内容吧，复杂的话需要定义下模板吧，如何定义？</p>'
-        // })
+      },
+      testModal2 () {
+        this.modal2 = true
+      },
+      testModal3 () {
+        this.modal3 = true
+      },
+      clickTest (item, key) {
+        console.log(item, key)
+        if (item.label === '取消') {
+          this.click1()
+        } else {
+          this.click2()
+        }
+      },
+      click1 () {
+        console.log('cancel!')
+      },
+      click2 () {
+        console.log('ok!')
       }
     }
   }

@@ -10,8 +10,8 @@ const TOP_DEFAULT_CONFIG = {
 }
 
 const BOTTOM_DEFAULT_CONFIG = {
-  pullText: '上拉加载',
-  triggerText: '释放更新',
+  pullText: '↑上拉加载',
+  triggerText: '↓释放更新',
   loadingText: '加载中...',
   doneText: '加载完成',
   failText: '加载失败',

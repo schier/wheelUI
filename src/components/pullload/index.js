@@ -1,3 +1,3 @@
-import PullLoad from './src/PullLoad'
+import PullLoad from './src/pullLoad.vue'
 
 export default PullLoad

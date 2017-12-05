@@ -32,7 +32,7 @@
               <a href="javascript:">input输入框</a>
               <a href="javascript:">radio单选框</a>
               <a href="javascript:">checkbo多选框</a>
-              <a href="javascript:">switch开关</a>
+              <router-link to="/demo/switch">switch开关</router-link>
               <a href="javascript:">searchbar搜索框</a>
             </div>
           </li>
@@ -52,6 +52,7 @@
               <router-link to="/demo/modal">modal对话框</router-link>
               <a href="javascript:">toast轻提示</a>
               <router-link to="/demo/pullload">pulload拉动加载/刷新</router-link>
+              <router-link to="/demo/popover">popover</router-link>
             </div>
           </li>
           <li class="cell">

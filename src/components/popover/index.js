@@ -1,2 +1,2 @@
-import Popover from './src/Popover.vue'
+import Popover from './src/popover.vue'
 export default Popover

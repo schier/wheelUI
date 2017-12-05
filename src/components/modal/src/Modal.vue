@@ -1,9 +1,9 @@
 <template>
-  <div :class="[prefixCls + '-container']">
+  <div v-transfer-dom :data-transfer="transfer">
     <transition :name="transitionNames[1]">
-      <div :class="[prefixCls + '-mask']" v-show="visible"></div>
+      <div :class="[prefixCls + '-mask']" v-show="visible" @click="mask"></div>
     </transition>
-    <div :class="[prefixCls + '-wrap']" v-show="visible">
+    <div :class="wrapClasses" @click="handleWrapClick">
       <transition :name="transitionNames[0]" @after-leave="animationFinish">
         <!-- <div class="wh-modal wh-modal-operation wh-modal-transparent"> -->
         <div :class="classes" v-show="visible">
@@ -15,9 +15,7 @@
             <div :class="[prefixCls + '-ft']">
               <slot name="footer">
                 <div :class="buttonGroupStyle">
-                  <!-- <div v-for="(text, key) in menus" @click="onMenuClick(text, key)" v-html="$t(text.label || text)" :class="`vux-actionsheet-menu-${text.type || 'default'}`"> -->
-                  <a class="wh-modal-button" v-for="(button, key) in buttons" v-html="button.label" @click="onButtonClick(button, key)"></a>
-                  <!-- <a class="wh-modal-button">确定</a> -->
+                  <a href="javascript:"  :class="[prefixCls + '-button']" v-for="(button, key) in buttons" v-html="button.label" @click="onButtonClick(button, key)"></a>
                 </div>
               </slot>
             </div>
@@ -29,9 +27,13 @@
 </template>
 
 <script>
+  import Emitter from '../../_utils/emitter'
+  import TransferDom from '../../_utils/transfer-dom'
   const prefixCls = 'wh-modal'
   export default {
     name: 'Modal',
+    mixins: [ Emitter ],
+    directives: { TransferDom },
     props: {
       value: { // 对话框是否显示，可使用 v-model 双向绑定数据
         type: Boolean,
@@ -41,10 +43,10 @@
       //   type: Boolean,
       //   default: false
       // },
-      // maskClosable: { // 是否允许点击遮罩层关闭
-      //   type: Boolean,
-      //   default: true
-      // },
+      maskClosable: { // 是否允许点击遮罩层关闭
+        type: Boolean,
+        default: true
+      },
       title: { // 对话框标题，如果使用 slot 自定义了页头，则 title 无效
         type: String,
         default: ''
@@ -58,42 +60,72 @@
         default () {
           return ['ease', 'fade']
         }
+      },
+      transfer: {
+        type: Boolean,
+        default: true
+      },
+      operation: {
+        type: Boolean,
+        default: false
       }
     },
     data () {
       return {
         prefixCls: prefixCls,
+        wrapShow: false,
         showHead: true,
         visible: this.value
       }
     },
     computed: {
+      wrapClasses () {
+        return [
+          `${prefixCls}-wrap`,
+          {
+            [`${prefixCls}-hidden`]: !this.wrapShow
+          }
+        ]
+      },
       classes () {
         return [
           `${prefixCls}`,
-          `${prefixCls}-transparent`
-          // {
-          //   [
-          //     `${prefixCls}-transparent`
-          //   ]
-          // }
+          {
+            [`${prefixCls}-operation`]: !!this.operation
+          }
         ]
       },
       buttonGroupStyle () {
-        return this.buttons.length > 2
-          ? `${prefixCls}-button-group-v`
-          : `${prefixCls}-button-group-h`
+        return this.buttons.length === 2
+          ? `${prefixCls}-button-group-h`
+          : `${prefixCls}-button-group-v`
       }
     },
     methods: {
+      close () {
+        this.visible = false
+        this.$emit('input', false)
+        this.$emit('on-cancel')
+      },
+      mask () {
+        if (this.maskClosable) {
+          this.close()
+        }
+      },
+      handleWrapClick () {
+        // use indexOf,do not use === ,because ivu-modal-wrap can have other custom className
+        const className = event.target.getAttribute('class')
+        if (className && className.indexOf(`${prefixCls}-wrap`) > -1) this.mask()
+      },
       animationFinish () {
         this.$emit('on-hidden')
       },
       onButtonClick (button, key) {
-        if (!button.disabled && button.onClick && typeof button.onClick === 'function') {
-          this.$emit('on-button-click', button.onClick, button)
+        if (!button.disabled) {
           this.visible = false
+          this.$emit('input', false)
         }
+        this.$emit('button-click', button, key)
       }
     },
     watch: {
@@ -101,8 +133,32 @@
         this.visible = val
       },
       visible (val) {
-        this.$emit('Table', 'on-visible-change', val)
+        if (val === false) {
+          this.timer = setTimeout(() => {
+            this.wrapShow = false
+          }, 200)
+        } else {
+          if (this.timer) clearTimeout(this.timer)
+          this.wrapShow = true
+        }
+        this.broadcast('Table', 'on-visible-change', val)
+      },
+      title (val) {
+        if (this.$slots.header === undefined) {
+          this.showHead = !!val
+        }
       }
+    },
+    mounted () {
+      if (this.visible) {
+        this.wrapShow = true
+      }
+
+      let showHead = true
+      if (this.$slots.header === undefined && !this.title) {
+        showHead = false
+      }
+      this.showHead = showHead
     }
   }
 </script>

@@ -1,10 +1,11 @@
 <template>
   <div>
     <p>TODO：无限滚动，填充满整个高度</p>
-    <div style="height:700px;overflow:hidden;background-color:#ccc">
+    <div style="height:500px;overflow:hidden;background-color:#f40">
       <pull-load :top-load-method="refresh" @infinite-scroll="loadmore">
+      <!-- <pull-load :top-load-method="refresh" :bottom-load-method="loadmore"> -->
         <p class="demo-p" v-for="(item, index) in list" :key="index">Content {{ item }}</p>
-        <div>加载中...</div>
+        <!-- <div>加载中...</div> -->
       </pull-load>
     </div>
   </div>

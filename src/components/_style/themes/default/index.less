@@ -7,8 +7,7 @@
 
 // -------- Colors -----------
 // brand
-// @brand-primary            : @blue-6;
-@brand-primary            : @orange-6;
+@brand-primary            : @blue-6;
 @brand-info               : @blue-6;
 @brand-success            : @green-6;
 @brand-error              : @red-6;
@@ -31,6 +30,9 @@
 
 // Background color for `<body>`
 @body-color-background    : #efeff4;
+
+// Opacity
+@opacity-disabled         : 0.5;   // switch checkbox radio 等组件禁用的透明度
 
 //  Text color
 @text-color-base          : #000;           // 基本
@@ -97,11 +99,16 @@
 @z-index-3                : 3 * @z-index-base;
 @z-index-4                : 4 * @z-index-base;
 // 组件z-index管理
-@z-index-modadl           : @z-index-1; // modal.alert 应该最大，其他应该较小
-@z-index-actionsheet      : @z-index-2; // actonsheet 会放到 popup / modal 中
+@z-index-mask             : @z-index-1;
+@z-index-modadl           : @z-index-2; // modal.alert 应该最大，其他应该较小
+@z-index-actionsheet      : @z-index-2; // actonsheet
 @z-index-popover          : @z-index-4;
 @z-index-popup            : @z-index-1;
 
+// Animation
+@animation-time           : .2s;
+@transition-time          : .1s;
+@ease-in-out              : ease-in-out;
 
 // @progress-zindex: 2000;
 // @popover-zindex: 1999;
@@ -197,4 +204,12 @@
 @modal-btn-height         : 50 * @hd; // 按钮高度
 
 
+// switch
+@switch-size-m-width      : 36 * @hd;
+@switch-size-m-height     : 24 * @hd;
+@switch-size-s-width      : 52 * @hd;
+@switch-size-s-height     : 32 * @hd;
 
+@switch-bg                : @brand-normal;
+@switch-bg-on             : @brand-success;
+@switch-bg-off            : #fdfdfd;
