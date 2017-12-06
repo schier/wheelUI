@@ -8,6 +8,7 @@ import Modal from './modal'
 import PullLoad from './pullLoad'
 import Popover from './popover'
 import iSwitch from './switch'
+import Toast from './toast'
 
 const CellGroup = Cell.Group
 const ButtonGroup = iButton.Group
@@ -24,5 +25,6 @@ export {
   Modal,
   PullLoad,
   Popover,
-  iSwitch
+  iSwitch,
+  Toast
 }

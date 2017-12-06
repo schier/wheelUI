@@ -12,6 +12,7 @@ import ModalDemo from '@/components/modal/demo/Index'
 import PullLoadDemo from '@/components/pullload/demo/Index'
 import PopoverDemo from '@/components/popover/demo/Index'
 import SwitchDemo from '@/components/switch/demo/Index'
+import ToastDemo from '@/components/toast/demo/Index'
 
 Vue.use(Router)
 
@@ -71,6 +72,11 @@ export default new Router({
       path: '/demo/switch',
       name: 'SwitchDemo',
       component: SwitchDemo
+    },
+    {
+      path: '/demo/toast',
+      name: 'ToastDemo',
+      component: ToastDemo
     }
   ]
 })

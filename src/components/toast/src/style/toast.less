@@ -1,0 +1,26 @@
+@import "../../../_style/fn";
+
+@prefix-cls: ~"@{prefix}-toast";
+
+.@{prefix-cls} {
+  position: fixed;
+  z-index: @z-index-toast;
+  min-width: 60 * @hd;
+  max-width: 50%;
+  padding: @v-spacing-l @h-spacing-m;
+  border-radius: @radius-s;
+  text-align: center;
+  color: @text-color-base-inverse;
+  background-color: @toast-fill;
+
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+
+  &-content {
+    line-height: @line-height-paragraph;
+  }
+
+  &-mask {
+    .mask-transparent();
+  }
+}

@@ -9,6 +9,7 @@
   font-size: @font-size-xl;
   line-height: @line-height-paragraph;
   position: relative;
+  user-select: none;
   .hairline('top');
   &:before {
     left: @cell-gap-h !important;
@@ -35,7 +36,7 @@
     .hairline('bottom');
   }
   &-title {
-    margin-bottom: @v-spacing-l;
+    margin-bottom: @v-spacing-s;
     padding-left: @cell-gap-h;
     padding-right: @cell-gap-h;
     color: @text-color-caption;
@@ -50,14 +51,14 @@
   &&-access {
     color: inherit;
     &:active {
-      background-color: #ECECEC;
+      background-color: @cell-access-bg;
     }
     .@{prefix-cls}-ft {
       padding-right: @cell-gap-h;
       position: relative;
       &:after {
         content: '';
-        .setArrow(right, 6px, #C8C8CD, 2px);
+        .setArrow(right, 6px, @cell-arrow-color, 2px);
         position: absolute;
         top: 50%;
         margin-top: -4px;

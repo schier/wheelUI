@@ -6,7 +6,14 @@
         <p class="desc">WheelUI是基于vue搭建的一款移动端UI组件库</p>
       </div>
       <div class="page-bd">
-        <ul>
+        <cell-group v-for="cat in components" :key="cat.id" :title="cat.cat">
+          <!-- <cell v-for="item in cat.items" isLink :to="['/demo/' + itme.link]"> -->
+          <cell v-for="item in cat.items" :key="item.id" isLink to="https://mint-ui.github.io">
+            <div slot="bd">{{ item.name }}</div>
+            <div slot="ft"></div>
+          </cell>
+        </cell-group>
+        <!-- <ul>
           <li class="cell">
             <h3 class="title">基础组件</h3>
             <div class="list">
@@ -50,7 +57,7 @@
             <div class="list">
               <router-link to="/demo/actionsheet">actionsheet动作面板</router-link>
               <router-link to="/demo/modal">modal对话框</router-link>
-              <a href="javascript:">toast轻提示</a>
+              <router-link to="/demo/toast">toast轻提示</router-link>
               <router-link to="/demo/pullload">pulload拉动加载/刷新</router-link>
               <router-link to="/demo/popover">popover</router-link>
             </div>
@@ -65,7 +72,7 @@
               <a href="javascript:">msg结果展示</a>
             </div>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
     <div class="wh-tabbar">
@@ -94,14 +101,154 @@
 </template>
 
 <script>
-import Badge from '../components/badge/src/badge'
-import Icon from '../components/icon/src/icon'
+import { Cell, CellGroup, Badge, Icon } from '@/components'
 export default {
   name: 'app',
-  components: { Badge, Icon },
+  components: { Cell, CellGroup, Badge, Icon },
   data () {
     return {
-      iconSize: 26
+      iconSize: 26,
+      components: [
+        {
+          cat: '基础组件',
+          items: [
+            {
+              name: 'badge徽章',
+              link: 'badge'
+            },
+            {
+              name: 'avatar头像',
+              link: 'avatar'
+            },
+            {
+              name: 'icon图标',
+              link: 'icon'
+            }
+          ]
+        },
+        {
+          cat: '结构类',
+          items: [
+            {
+              name: 'grid',
+              link: 'grid'
+            },
+            {
+              name: 'cell',
+              link: 'cell'
+            },
+            {
+              name: 'flex',
+              link: 'flex'
+            },
+            {
+              name: 'tab选项卡',
+              link: 'tab'
+            },
+            {
+              name: 'table表格',
+              link: 'table'
+            }
+          ]
+        },
+        {
+          cat: '表单类',
+          items: [
+            {
+              name: 'button按钮',
+              link: 'button'
+            },
+            {
+              name: 'input&textarea输入框',
+              link: 'input'
+            },
+            {
+              name: 'radio单选框',
+              link: 'radio'
+            },
+            {
+              name: 'checkbox多选框',
+              link: 'checkbox'
+            },
+            {
+              name: 'switch开关',
+              link: 'switch'
+            },
+            {
+              name: 'searchbar搜索框',
+              link: 'searchbar'
+            }
+          ]
+        },
+        {
+          cat: '导航类',
+          items: [
+            {
+              name: 'tabbar底部导航',
+              link: 'tabbar'
+            },
+            {
+              name: 'navbar顶部导航',
+              link: 'navbar'
+            },
+            {
+              name: 'menu菜单',
+              link: 'menu'
+            },
+            {
+              name: 'drawer抽屉导航',
+              link: 'drawer'
+            }
+          ]
+        },
+        {
+          cat: '操作反馈',
+          items: [
+            {
+              name: 'actionsheet动作面板',
+              link: 'actionsheet'
+            },
+            {
+              name: 'modal对话框',
+              link: 'modal'
+            },
+            {
+              name: 'toast轻提示',
+              link: 'toast'
+            },
+            {
+              name: 'pulload拉动加载',
+              link: 'pullload'
+            },
+            {
+              name: 'popover',
+              link: 'popover'
+            }
+          ]
+        },
+        {
+          cat: '动画',
+          items: [
+            {
+              name: '动画',
+              link: 'animation'
+            }
+          ]
+        },
+        {
+          cat: '拓展业务',
+          items: [
+            {
+              name: 'login登录&注册',
+              link: 'login'
+            },
+            {
+              name: 'msg结果展示',
+              link: 'msg'
+            }
+          ]
+        }
+      ]
     }
   }
 }
@@ -111,33 +258,12 @@ export default {
   @import "../components/_style/fn";
   ul { list-style: none; }
   .page {
-    padding: 30px 30px 44px;
+    padding: 0 0 64px;
     &-hd {
-      margin-bottom: 20px;
+      padding: 20px;
       .desc { color: #999; }
     }
-    &-bd {
-      .cell {
-        margin-bottom: 15px;
-        color: #333;
-        background-color: #fff;
-        .title {
-          padding: 10px;
-          font-weight: normal;
-        }
-        .list {
-          background-color: #f8f8f8;
-          a {
-            display: block;
-            padding: 15px;
-            color: inherit;
-            border-bottom: 1px solid #eee;
-          }
-        }
-      }
-    }
   }
-
   .wh-tabbar {
     position: fixed;
     z-index: 500;

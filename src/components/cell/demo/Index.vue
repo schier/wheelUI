@@ -5,6 +5,14 @@
         <div slot="bd">显示预览</div>
         <div slot="ft">始终</div>
       </cell>
+      <cell isLink :to="{ name: 'ModalDemo' }">
+        <div slot="bd">点击事件1</div>
+        <div slot="ft"></div>
+      </cell>
+      <cell isLink to="https://mint-ui.github.io">
+        <div slot="bd">baidu.com</div>
+        <div slot="ft"></div>
+      </cell>
     </cell-group>
     <cell-group title="通知类型">
       <cell isLink>
@@ -51,7 +59,12 @@
 <script>
 import { Badge, Icon, Avatar, Cell, CellGroup } from '@/components'
 export default {
-  components: { Badge, Icon, Avatar, Cell, CellGroup }
+  components: { Badge, Icon, Avatar, Cell, CellGroup },
+  methods: {
+    click (e) {
+      console.log(e)
+    }
+  }
 }
 </script>
 

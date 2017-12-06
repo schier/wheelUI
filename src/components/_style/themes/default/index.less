@@ -104,19 +104,12 @@
 @z-index-actionsheet      : @z-index-2; // actonsheet
 @z-index-popover          : @z-index-4;
 @z-index-popup            : @z-index-1;
+@z-index-toast            : @z-index-2;
 
 // Animation
 @animation-time           : .2s;
 @transition-time          : .1s;
 @ease-in-out              : ease-in-out;
-
-// @progress-zindex: 2000;
-// @popover-zindex: 1999;
-// @toast-zindex: 1999;
-// @action-sheet-zindex: 1000; // actonsheet 会放到 popup / modal 中
-// @picker-zindex: 1000;
-// @popup-zindex: 999;
-// @tabs-pagination-zindex: 999;
 
 // Default background color for disabled states, Collapse wrappers,
 // and several active and hover states.
@@ -137,9 +130,6 @@
 @disabled-color-dark      : fade(#fff, 35%);
 
 // -------- components -----------
-// cell
-
-
 // Avatar
 @avatar-size-m            : 24 * @hd;
 @avatar-size-s            : 32 * @hd;
@@ -193,6 +183,8 @@
 // Cell
 @cell-gap-v               : 10 * @hd;
 @cell-gap-h               : 15 * @hd;
+@cell-access-bg           : #ECECEC;
+@cell-arrow-color         : #C8C8CD;
 
 // Navbar
 @navbar-height            : 44px;
@@ -209,7 +201,11 @@
 @switch-size-m-height     : 24 * @hd;
 @switch-size-s-width      : 52 * @hd;
 @switch-size-s-height     : 32 * @hd;
-
 @switch-bg                : @brand-normal;
 @switch-bg-on             : @brand-success;
 @switch-bg-off            : #fdfdfd;
+
+
+// toast
+@toast-fill               : rgba(58, 58, 58, 0.9); // toast, activity-indicator 的背景颜色
+

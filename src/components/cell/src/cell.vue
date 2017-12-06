@@ -1,5 +1,6 @@
 <template>
-  <div :class="classes" @click="handleClick">
+  <a :class="classes" :href="href">
+  <!-- <div :class="classes"> -->
     <div :class="[prefixCls + '-hd']">
       <slot name='hd'></slot>
     </div>
@@ -9,7 +10,7 @@
     <div :class="[prefixCls + '-ft']">
       <slot name='ft'></slot>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -17,6 +18,7 @@
   export default {
     name: 'Cell',
     props: {
+      to: [String, Object],
       isLink: {
         type: Boolean,
         default: false
@@ -35,11 +37,28 @@
             [`${prefixCls}-access`]: !!this.isLink
           }
         ]
+      },
+      href () {
+        if (this.to && !this.added && this.$router) {
+          const resolved = this.$router.match(this.to)
+          console.log(resolved.matched.length)
+          if (!resolved.matched.length) return this.to
+          this.$nextTick(() => {
+            this.added = true
+            this.$el.addEventListener('click', this.handleClick)
+          })
+          return resolved.path
+        }
+        return this.to
       }
     },
     methods: {
-      handleClick (event) {
-        this.$emit('click', event)
+      handleClick ($event) {
+        console.log($event)
+        $event.preventDefault()
+        // window.location.href = this.hre
+        this.$router.push(this.href)
+        // this.$emit('click', event)
       }
     }
   }
