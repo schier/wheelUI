@@ -1,7 +1,7 @@
 <template>
   <div>
     <cell-group tips="无论iPhone是否锁定，都会显示通知预览。">
-      <cell isLink>
+      <cell isLink @click="click">
         <div slot="bd">显示预览</div>
         <div slot="ft">始终</div>
       </cell>
@@ -9,7 +9,7 @@
         <div slot="bd">点击事件1</div>
         <div slot="ft"></div>
       </cell>
-      <cell isLink to="https://mint-ui.github.io">
+      <cell isLink to="https://baidu.com">
         <div slot="bd">baidu.com</div>
         <div slot="ft"></div>
       </cell>

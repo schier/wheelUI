@@ -1,5 +1,5 @@
 <template>
-  <a :class="classes" :href="href">
+  <div :class="classes" @click="handleClick">
   <!-- <div :class="classes"> -->
     <div :class="[prefixCls + '-hd']">
       <slot name='hd'></slot>
@@ -10,7 +10,7 @@
     <div :class="[prefixCls + '-ft']">
       <slot name='ft'></slot>
     </div>
-  </a>
+  </div>
 </template>
 
 <script>
@@ -53,12 +53,21 @@
       }
     },
     methods: {
-      handleClick ($event) {
-        console.log($event)
-        $event.preventDefault()
-        // window.location.href = this.hre
-        this.$router.push(this.href)
-        // this.$emit('click', event)
+      handleClick (event) {
+        if (this.to && !this.added && this.$router) {
+          const resolved = this.$router.match(this.to)
+          if (!resolved.matched.length) {
+            window.location.href = this.to
+          } else {
+            this.$nextTick(() => {
+              this.added = true
+            })
+            event.preventDefault()
+            this.$router.push(resolved.path)
+          }
+        } else {
+          this.$emit('click', event)
+        }
       }
     }
   }
